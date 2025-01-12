@@ -1,0 +1,71 @@
+
+contacts = {}
+
+while True:
+   print('\nContact Book')
+   print('1.Create contact')
+   print('2.View contact')
+   print('3.Update contact')
+   print('4.Delete contact')
+   print('5.Search contact')
+   print('6.Count contact')
+   print('7.Exist') 
+
+   choice =input('Enter your choice = ')
+
+
+   if choice == "1":
+      name =input('Enter your name= ')
+      if name in contacts:
+          print(f'Contact name {name} already exists')
+      else:
+         age = input("Enter age = ")   
+         email = input("Enter email = ")   
+         mobile =input("Enter mobile number = ")  
+         contacts[name]  = {'age':int(age),'email':email,'mobile':mobile}
+         print(f'Contact name {name} has been created successfully!')
+
+   elif choice =="2":
+      name =input('Enter contact name to View = ')
+      if name in contacts:
+         contact =contacts[name]
+         print(f'Name:{name},Age:{age}, Mobile Number: {mobile},Email:{email}')
+      else:
+         print('Contact not found!') 
+
+   elif choice =="3":     
+      name =input('Enter name to Update contact = ')
+      if name in contacts :
+         age = input("Enter Updated age = ")   
+         email = input("Enter Updated email = ")   
+         mobile =input("Enter Updated mobile number = ")  
+         contacts[name]  = {'age':int(age),'email':email,'mobile':mobile}
+      else:
+         print('Contact not found!')
+
+   elif choice =="4":      
+       name =input('Enter contact name to delete = ')
+       if name in contacts :
+          del contacts[name]
+          print(f'Contact name {name} has been deleted successfully!')
+       else:
+         print('Contact not found!')
+
+   elif choice =="5":
+          search_name =input('Enter contact name to Search = ') 
+          Found = False
+          for name, contact in contacts.items():
+             if search_name.lower() in name.lower():
+                print(f'Name:{name},Age:{age}, Mobile Number: {mobile},Email:{email}')
+                found =True
+             if not found :
+               print ('no contact found with that name')
+   elif choice =="6":
+       print(f'Total contacts in your book : {len(contacts)}')
+
+
+   elif choice =="7":
+      print('Bye...!Closing the program')
+      break
+   else:
+      print('Invalid input')
